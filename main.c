@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdint.h>
-
+#include <string.h>
 // Arrays with Bounds Checking
 // Have in mind that this should be done for each type
 // that we need, in this case is for int32_t, but if you
@@ -115,7 +115,8 @@ User UserArray_Get(UserArray array,int index)
     {
         return array.users[index];
     }
-    return;
+    User emptyUser = { " ", 1 };
+    return emptyUser;
 }
 ///////////////////////////////////////////////
 //    ARENA : Not use malloc and free like crazy
@@ -131,6 +132,83 @@ User UserArray_Get(UserArray array,int index)
 //     .memory = malloc(DOCUMENT_ARENA_CAPACITY),
 //     .nextOffset = 0,
 // };
+
+///////////////////////////////////////////
+// Union
+///////////////////////////////////////////
+
+struct structTest
+{
+    int x;
+    float b;
+    char str[10];
+};
+ 
+union unionTest
+{
+    int x;
+    float b;
+    char str[10];
+};
+
+void CompareSizeOfStructVsUnion()
+{
+    struct structTest st;
+    union unionTest un;
+    printf("Struct total size in bytes : %d\n",sizeof(st));
+    printf("Union total size in bytes : %d\n",sizeof(un));
+}
+
+// Polymorphic
+#define ACTOR_UNION_MAXSIZE 64
+typedef enum 
+{
+    ActorAge,
+    ActorPower,
+    ActorName
+} EActorData;
+
+typedef struct
+{
+    EActorData actorData;
+    union
+    {
+        int age;
+        int power;
+        char name[ACTOR_UNION_MAXSIZE];
+    };
+}ActorClass;
+
+void PrintActor(ActorClass* actor)
+{
+    switch (actor->actorData)
+    {
+    case ActorAge:
+        printf("actor age %d\n",actor->age);
+        printf("Actor total size in bytes : %zu\n",sizeof(*actor));
+        break;
+    case ActorPower:
+        printf("actor Power %d\n",actor->power);
+        printf("Actor total size in bytes : %zu\n",sizeof(*actor));
+        break;
+    case ActorName:
+        printf("actor Name %s\n",actor->name);
+        printf("Actor total size in bytes : %zu\n",sizeof(*actor));
+    default:
+        break;
+    }
+}
+
+void CreateAnActor(int a,int p, char* n,EActorData type)
+{
+    ActorClass actor;
+    actor.age = a;
+    actor.power = p;
+    actor.actorData = type;
+    strcpy(actor.name, n);
+    PrintActor(&actor);
+}
+
 ///////////////////////////////////////////////////////////////////////////////
 // Main function
 ///////////////////////////////////////////////////////////////////////////////
@@ -141,5 +219,11 @@ int main(int argc, char* args[]) {
     // " GENERATIONAL INDEXES"
     // User[3] users={};
     // User* friend = UserArray_Get(users,john.friendIndex);
+
+    CompareSizeOfStructVsUnion();
+
+    CreateAnActor(45,400,"Pablo",ActorAge);
+    CreateAnActor(45,400,"Pablo",ActorPower);
+    CreateAnActor(45,400,"Pablo",ActorName);
     return 0;
 }
