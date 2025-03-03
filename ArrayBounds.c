@@ -14,7 +14,7 @@ void OutOfBound()
     int arrayLen = 10;
     
     // Bad Segmentation fault that will pass under the hood if not using sanitazer
-    for(int i=0; i<=arrayLen; i++)
+    for(int i=0; i <= arrayLen; i++)
     {
         intArray[i] = 2;
     }
@@ -39,7 +39,7 @@ char CharArray_Get(CharArray array,int32_t index)
 }
 void IterateItemsChar(CharArray array)
 {
-    for(int i = 0;i <= array.length;i++)
+    for(int i = 0;i < array.length;i++)
     {
         char item = CharArray_Get(array,i);
         printf("%c\n",item);
@@ -66,10 +66,10 @@ int Int32Array_Get(Int32Array array,int32_t index)
 
 void IterateItemsInt(Int32Array array)
 {
-    for(int i = 0;i <= array.length;i++)
+    for(int i = 0;i < array.length;i++)
     {
         int item = Int32Array_Get(array,i);
-        printf("%s\n",item);
+        printf("%d\n",item);
     }
 }
 
