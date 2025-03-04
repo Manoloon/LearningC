@@ -1,7 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "ArrayBounds.c"
+#include "Src/ArrayBounds.c"
+#include "Src/ObjectPool.h"
 
 ///////////////////////////////////////////////
 // Strings on C are insane haha
@@ -158,5 +159,8 @@ int main(int argc, char* args[]) {
     CreateAnActor(45,400,"Pablo",ActorAge);
     CreateAnActor(45,400,"Pablo",ActorPower);
     CreateAnActor(45,400,"Pablo",ActorName);
+
+
+    TestObjectPoolManager(20);
     return 0;
 }
