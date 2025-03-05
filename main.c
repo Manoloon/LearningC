@@ -161,6 +161,7 @@ int main(int argc, char* args[]) {
     CreateAnActor(45,400,"Pablo",ActorName);
 
 
-    TestObjectPoolManager(20);
+    //TestObjectPoolManagerSlow(2000);
+    TestObjectPoolManagerFast(2000);
     return 0;
 }

@@ -40,3 +40,6 @@ char str[10] = 12 bytes.
 
 Another useful use hehe of the union is, as in C there is no polymorphic idea as a Class u Objects,
 we can use union as a solution for this.
+
+# Object pool
+Object pools are super useful as a way to avoid malloc and free for each object created, also it 
