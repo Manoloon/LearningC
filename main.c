@@ -45,7 +45,7 @@ User UserArray_Get(UserArray array,int index)
     {
         return array.users[index];
     }
-    User emptyUser = { " ", 1 };
+    User emptyUser = {{(char *)" ",1},(int32_t) 1 };
     return emptyUser;
 }
 ///////////////////////////////////////////////
@@ -85,8 +85,8 @@ void CompareSizeOfStructVsUnion()
 {
     struct structTest st;
     union unionTest un;
-    printf("Struct total size in bytes : %d\n",sizeof(st));
-    printf("Union total size in bytes : %d\n",sizeof(un));
+    printf("Struct total size in bytes : %d\n",(int)sizeof(st));
+    printf("Union total size in bytes : %d\n",(int)sizeof(un));
 }
 
 // Polymorphic
@@ -101,12 +101,12 @@ typedef enum
 typedef struct
 {
     EActorData actorData;
-    union
+    union Data
     {
         int age;
         int power;
         char name[ACTOR_UNION_MAXSIZE];
-    };
+    }data;
 }ActorClass;
 
 void PrintActor(ActorClass* actor)
@@ -114,15 +114,15 @@ void PrintActor(ActorClass* actor)
     switch (actor->actorData)
     {
     case ActorAge:
-        printf("actor age %d\n",actor->age);
+        printf("actor age %d\n",actor->data.age);
         printf("Actor total size in bytes : %zu\n",sizeof(*actor));
         break;
     case ActorPower:
-        printf("actor Power %d\n",actor->power);
+        printf("actor Power %d\n",actor->data.power);
         printf("Actor total size in bytes : %zu\n",sizeof(*actor));
         break;
     case ActorName:
-        printf("actor Name %s\n",actor->name);
+        printf("actor Name %s\n",actor->data.name);
         printf("Actor total size in bytes : %zu\n",sizeof(*actor));
     default:
         break;
@@ -132,17 +132,17 @@ void PrintActor(ActorClass* actor)
 void CreateAnActor(int a,int p, char* n,EActorData type)
 {
     ActorClass actor;
-    actor.age = a;
-    actor.power = p;
+    actor.data.age = a;
+    actor.data.power = p;
     actor.actorData = type;
-    strcpy(actor.name, n);
+    strcpy(actor.data.name, n);
     PrintActor(&actor);
 }
 
 ///////////////////////////////////////////////////////////////////////////////
 // Main function
 ///////////////////////////////////////////////////////////////////////////////
-int main(int argc, char* args[]) {
+int main() {
     char test[] = "Pablo";
     CharArray charArr = {test,5,10};
     IterateItemsChar(charArr);

@@ -31,6 +31,7 @@ Vector3* BorrowObject(void)
             return &ObjectPoolManager[i].Object;
         }
     }
+    return NULL;
 }
 
 void ReturnObjectSlow(Vector3* obj)
@@ -69,7 +70,7 @@ void TestObjectPoolManagerSlow(int n)
     {
         Vector3* v1 = BorrowObject();
         Vector3* v2 = BorrowObject();
-        printf("Got Obj %d @ address %p %p\n",i,v1,v2);
+        printf("Got Obj %d @ address %p %p\n",i,(void*)v1,(void*)v2);
         ReturnObjectSlow(v1);
         ReturnObjectSlow(v2);
     }
@@ -89,7 +90,7 @@ void TestObjectPoolManagerFast(int n)
     {
         Vector3* v1 = BorrowObject();
         Vector3* v2 = BorrowObject();
-        printf("Got Obj %d @ address %p %p\n",i,v1,v2);
+        printf("Got Obj %d @ address %p %p\n",i,(void*)v1,(void*)v2);
         ReturnObject(v1);
         ReturnObject(v2);
     }
