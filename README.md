@@ -42,4 +42,6 @@ Another useful use hehe of the union is, as in C there is no polymorphic idea as
 we can use union as a solution for this.
 
 # Object pool
-Object pools are super useful as a way to avoid malloc and free for each object created, also it 
+Object pools are a good way to avoid dynamic memory allocation and MALLOC and FREE Allocation Fragmentation and non deterministic use of memory.
+This garanty the amount of heap used.
+Instead of static/global variables, an object pool lets you recycle objects when they're no longer needed, making better use of memory.

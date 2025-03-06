@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include "Src/Unions.h"
 #include "Src/ArrayBounds.c"
 #include "Src/ObjectPool.h"
 
@@ -63,81 +64,6 @@ User UserArray_Get(UserArray array,int index)
 //     .nextOffset = 0,
 // };
 
-///////////////////////////////////////////
-// Union
-///////////////////////////////////////////
-
-struct structTest
-{
-    int x;
-    float b;
-    char str[10];
-};
- 
-union unionTest
-{
-    int x;
-    float b;
-    char str[10];
-};
-
-void CompareSizeOfStructVsUnion()
-{
-    struct structTest st;
-    union unionTest un;
-    printf("Struct total size in bytes : %d\n",(int)sizeof(st));
-    printf("Union total size in bytes : %d\n",(int)sizeof(un));
-}
-
-// Polymorphic
-#define ACTOR_UNION_MAXSIZE 64
-typedef enum 
-{
-    ActorAge,
-    ActorPower,
-    ActorName
-} EActorData;
-
-typedef struct
-{
-    EActorData actorData;
-    union Data
-    {
-        int age;
-        int power;
-        char name[ACTOR_UNION_MAXSIZE];
-    }data;
-}ActorClass;
-
-void PrintActor(ActorClass* actor)
-{
-    switch (actor->actorData)
-    {
-    case ActorAge:
-        printf("actor age %d\n",actor->data.age);
-        printf("Actor total size in bytes : %zu\n",sizeof(*actor));
-        break;
-    case ActorPower:
-        printf("actor Power %d\n",actor->data.power);
-        printf("Actor total size in bytes : %zu\n",sizeof(*actor));
-        break;
-    case ActorName:
-        printf("actor Name %s\n",actor->data.name);
-        printf("Actor total size in bytes : %zu\n",sizeof(*actor));
-    default:
-        break;
-    }
-}
-
-void CreateAnActor(int a,int p, char* n,EActorData type)
-{
-    ActorClass actor;
-    actor.data.age = a;
-    actor.data.power = p;
-    actor.actorData = type;
-    strcpy(actor.data.name, n);
-    PrintActor(&actor);
-}
 
 ///////////////////////////////////////////////////////////////////////////////
 // Main function
@@ -154,14 +80,12 @@ int main() {
     // User[3] users={};
     // User* friend = UserArray_Get(users,john.friendIndex);
 
+    // Testing structs vs unions
     CompareSizeOfStructVsUnion();
-
-    CreateAnActor(45,400,"Pablo",ActorAge);
-    CreateAnActor(45,400,"Pablo",ActorPower);
-    CreateAnActor(45,400,"Pablo",ActorName);
-
+    TestUnionPolymorphic();
 
     //TestObjectPoolManagerSlow(2000);
-    TestObjectPoolManagerFast(2000);
+    //TestObjectPoolManagerFast(2000);
+
     return 0;
 }
