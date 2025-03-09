@@ -45,3 +45,13 @@ we can use union as a solution for this.
 Object pools are a good way to avoid dynamic memory allocation and MALLOC and FREE Allocation Fragmentation and non deterministic use of memory.
 This garanty the amount of heap used.
 Instead of static/global variables, an object pool lets you recycle objects when they're no longer needed, making better use of memory.
+
+# Bit Wise Operations
+Bitwise Operators in C
+Operator	Name	Example (a = 5, b = 3)	Result
+&	AND	a & b (5 & 3)	1 (0101 & 0011 = 0001)
+`	`	OR	`a
+^	XOR	a ^ b (5 ^ 3)	6 (0101 ^ 0011 = 0110)
+~	NOT (bitwise negation)	~a (~5)	-6 (two's complement)
+<<	Left Shift	a << 1 (5 << 1)	10 (0101 << 1 = 1010)
+>>	Right Shift	a >> 1 (5 >> 1)	2 (0101 >> 1 = 0010)

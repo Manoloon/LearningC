@@ -4,6 +4,7 @@
 #include "Src/Unions.h"
 #include "Src/ArrayBounds.c"
 #include "Src/ObjectPool.h"
+#include "Src/BitWiseOP.h"
 
 ///////////////////////////////////////////////
 // Strings on C are insane haha
@@ -84,6 +85,7 @@ int main() {
     CompareSizeOfStructVsUnion();
     TestUnionPolymorphic();
 
+    PrintAmount(CHAR2,CHAR3);    
     //TestObjectPoolManagerSlow(2000);
     //TestObjectPoolManagerFast(2000);
 
