@@ -76,6 +76,13 @@ int main() {
     int intTest[] = {1,2,3,4,5,6,7,8};
     Int32Array intArr = {intTest,8,10};
     IterateItemsInt(intArr);
+    char name[100];
+    printf("Please insert your Name\n");
+    fgets(name,sizeof(name),stdin);
+    //trim the cut of line from name
+    name[strlen(name)-1] = '\0';
+
+    printf("Name : %s, length : %d\n",(char*)&name,(int)sizeof(name));
     // Testing Pointers and index
     // " GENERATIONAL INDEXES"
     // User[3] users={};
