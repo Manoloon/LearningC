@@ -82,7 +82,7 @@ int main() {
     //trim the cut of line from name
     name[strlen(name)-1] = '\0';
 
-    printf("Name : %s, length : %d\n",(char*)&name,(int)sizeof(name));
+    printf("Name : %s, length : %zu\n",(char*)&name,sizeof(name));
     // Testing Pointers and index
     // " GENERATIONAL INDEXES"
     // User[3] users={};
@@ -95,6 +95,13 @@ int main() {
     PrintAmount(CHAR2,CHAR3);    
     //TestObjectPoolManagerSlow(2000);
     //TestObjectPoolManagerFast(2000);
+    // note that this length is the total characters inside input = 3
+    const char* input = "100";
+    size_t length = strlen(input);
+    printf("size %zu\n",length);
 
+    const char str[] = "100";
+    printf("char* address %p, string %s\n",(void*)&input,input);
+    printf("char[] address %p, string %s\n",(void*)&str,str);
     return 0;
 }
