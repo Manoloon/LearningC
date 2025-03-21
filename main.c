@@ -5,6 +5,7 @@
 #include "Src/ArrayBounds.c"
 #include "Src/ObjectPool.h"
 #include "Src/BitWiseOP.h"
+#include "Src/Alloc.h"
 
 ///////////////////////////////////////////////
 // Strings on C are insane haha
@@ -70,6 +71,7 @@ User UserArray_Get(UserArray array,int index)
 // Main function
 ///////////////////////////////////////////////////////////////////////////////
 int main() {
+    /*
     char test[] = "Pablo";
     CharArray charArr = {test,5,10};
     IterateItemsChar(charArr);
@@ -103,5 +105,7 @@ int main() {
     const char str[] = "100";
     printf("char* address %p, string %s\n",(void*)&input,input);
     printf("char[] address %p, string %s\n",(void*)&str,str);
+    */
+    RunCallocTest();
     return 0;
 }
