@@ -6,6 +6,7 @@
 #include "Src/ObjectPool.h"
 #include "Src/BitWiseOP.h"
 #include "Src/Alloc.h"
+#include "Src/Decimals.c"
 
 ///////////////////////////////////////////////
 // Strings on C are insane haha
@@ -106,6 +107,10 @@ int main() {
     printf("char* address %p, string %s\n",(void*)&input,input);
     printf("char[] address %p, string %s\n",(void*)&str,str);
     */
-    RunCallocTest();
+    //RunCallocTest();
+    AddDec(2,0.30);
+    SubDec(2,0.3);
+    MultDec(0.12,11);
+    DivDec(100,30);
     return 0;
 }
