@@ -7,6 +7,8 @@
 #include "Src/BitWiseOP.h"
 #include "Src/Alloc.h"
 #include "Src/Decimals.c"
+#include "Src/LinkedList.h"
+#include "Src/Tree.h"
 
 ///////////////////////////////////////////////
 // Strings on C are insane haha
@@ -71,7 +73,7 @@ User UserArray_Get(UserArray array,int index)
 ///////////////////////////////////////////////////////////////////////////////
 // Main function
 ///////////////////////////////////////////////////////////////////////////////
-int main() {
+int main(int argc,char* argv[]) {
     /*
     char test[] = "Pablo";
     CharArray charArr = {test,5,10};
@@ -108,9 +110,6 @@ int main() {
     printf("char[] address %p, string %s\n",(void*)&str,str);
     */
     //RunCallocTest();
-    AddDec(2,0.30);
-    SubDec(2,0.3);
-    MultDec(0.12,11);
-    DivDec(100,30);
+    TestTree(argc,argv);
     return 0;
 }
