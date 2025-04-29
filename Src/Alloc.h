@@ -1,7 +1,9 @@
 #ifndef ALLOC_H
 #define ALLOC_H
+#define CRTDBG_MAP_ALLOC
 #include <stdio.h>
 #include <stdlib.h>
+#include <crtdbg.h>
 /*
     Dynamic Memory allocation : malloc() - free()
 */
@@ -30,6 +32,33 @@ int testDynamicMalloc()
     }
     printf("Sum of elements: %d",sum);
     free(array);
+return 0;
+}
+int testDynamicMallocWithLeaks()
+{
+    int *array;
+    int num_elems;
+    int sum = 0;
+    printf("Enter Number of elements: ");
+    scanf("%d",&num_elems);
+    array = (int*) malloc(num_elems * sizeof(int));
+    if(array == NULL)
+    {
+        printf("Memory allocation Failed\n");
+        return 1;
+    }
+    printf("enter %d integers:\n",num_elems);
+    for(int i = 0; i < num_elems;i++)
+    {
+        printf("Element %d:",i+1);
+        scanf("%d",&array[i]);
+    }
+    for(int i = 0; i < num_elems;i++)
+    {
+        sum +=array[i];
+    }
+    printf("Sum of elements: %d",sum);
+    _CrtDumpMemoryLeaks();
 return 0;
 }
 /*
