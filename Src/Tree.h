@@ -13,7 +13,7 @@ struct node
 
 static struct node* root = NULL;
 
-char SaveString(char* string)
+char* SaveString(char* string)
 {
     char* new_string = malloc((unsigned)(strlen(string) + 1));
     if(new_string == NULL)
@@ -50,11 +50,11 @@ void insert(struct node** node, char* word)
         insert(&(*node)->left,word);
 }
 
-void find(char* name)
+void Tree_find(char* name)
 {
     char word[100];
-    int index = 0;
-    FILE in_file = fopen(name,"r");
+    long long unsigned int index = 0;
+    FILE* in_file = fopen(name,"r");
     if(in_file == NULL)
     {
         fprintf(stderr,"Error:Unable to open %s\n",name);
@@ -98,7 +98,7 @@ int TestTree(int argc,char* argv[])
         fprintf(stderr,"    words 'file'\n");
         exit(8);
     }
-    find(argv[1]);
+    Tree_find(argv[1]);
     printTree(root);
     return (0);
 }
