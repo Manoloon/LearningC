@@ -12,7 +12,7 @@ struct Linked_list
         struct Linked_list* next_ptr;
     };
 struct Linked_list* first_ptr = NULL;
-void add_item(const char* item)
+void LL_add(const char* item)
 {
     struct Linked_list* new_item_ptr;
     new_item_ptr = malloc(sizeof(struct Linked_list));
@@ -26,7 +26,7 @@ void add_item(const char* item)
     first_ptr = new_item_ptr;
 }
 
-struct Linked_list* find(char* name)
+struct Linked_list* LL_find(char* name)
 {
     struct Linked_list* current_ptr = first_ptr;
     while(current_ptr->next_ptr != NULL && 
@@ -37,7 +37,7 @@ struct Linked_list* find(char* name)
     return current_ptr;
 }
 
-void del_item(char* name)
+void LL_remove(char* name)
 {
     struct Linked_list* current = first_ptr;
     struct Linked_list* prev = NULL;

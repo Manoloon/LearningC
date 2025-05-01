@@ -49,12 +49,12 @@ void PrintActor(Shape* shape)
     {
        
         printf("Shape Radius %f\n",shape->data.radius);
-        printf("Actor total size in bytes : %zu\n",sizeof(shape));
+        printf("Actor total size in bytes : %llu\n",sizeof(shape));
     }
     else
     {
         printf("Shape Area %d\n",shape->data.area);
-        printf("Actor total size in bytes : %zu\n",sizeof(shape));
+        printf("Actor total size in bytes : %llu\n",sizeof(shape));
     }
 }
 
