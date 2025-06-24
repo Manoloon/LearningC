@@ -69,10 +69,11 @@ User UserArray_Get(UserArray array,int index)
 //     .nextOffset = 0,
 // };
 
-#define print_value(v)_Generic(v,float: printf("%f",v),
-                                 int: printf("%d",v),
-                                 default: printf("anything else"))
-
+void print_value(v){
+_Generic(v,float: printf("%f",v),
+             int: printf("%d",v),
+             default: printf("anything else"));
+}
 ///////////////////////////////////////////////////////////////////////////////
 // Main function
 ///////////////////////////////////////////////////////////////////////////////
