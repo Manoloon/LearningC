@@ -69,20 +69,20 @@ User UserArray_Get(UserArray array,int index)
 //     .nextOffset = 0,
 // };
 
-void print_value(v){
-_Generic(v,float: printf("%f",v),
-             int: printf("%d",v),
-             default: printf("anything else"));
-}
+// void print_value(double v){
+// _Generic(v,float: printf("%f",v),
+//              int: printf("%d",v),
+//              default: printf("anything else"));
+// }
 ///////////////////////////////////////////////////////////////////////////////
 // Main function
 ///////////////////////////////////////////////////////////////////////////////
 int main(int argc,char* argv[]) {
     // generics
-    int value1= 5;
-    float value2= 3.2f;
-    print_value(value1);
-    print_value(value2);
+    // int value1= 5;
+    // float value2= 3.2f;
+    // print_value(value1);
+    // print_value(value2);
     /*
     char test[] = "Pablo";
     CharArray charArr = {test,5,10};
