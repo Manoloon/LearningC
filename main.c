@@ -11,6 +11,7 @@
 #include "Src/Tree.h"
 #include "Src/Queue.h"
 #include "Src/Stack.h"
+#include "Src/PriorityQueue.h"
 
 ///////////////////////////////////////////////
 // Strings on C are insane haha
@@ -82,6 +83,7 @@ User UserArray_Get(UserArray array,int index)
 int main(int argc,char* argv[]) {
     queue_test();
     stack_test();
+    PQ_test();
     // generics
     // int value1= 5;
     // float value2= 3.2f;
